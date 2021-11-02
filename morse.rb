@@ -59,6 +59,14 @@ class Morse
   def Morse.decode_char letter
     puts alphabet(letter).upcase
   end
+
+  def Morse.decode_word string
+    blob = string.split
+    blob2 = ""
+    blob.each { |n| blob2 += alphabet(n) }
+    puts blob2
+  end
 end
 
 Morse.decode_char ".-" # Should return 'A'
+Morse.decode_word "-- -.--" # Should return 'MY'
