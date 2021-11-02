@@ -66,7 +66,22 @@ class Morse
     blob.each { |n| blob2 += alphabet(n) }
     puts blob2
   end
+
+  def Morse.decode_string string
+    str = string.tr("/", " ")
+    blob = ""
+    words = str.split("   ")
+    words.each { |n|
+      letters = n.split
+      letters.each { |j| blob += alphabet(j) }
+      blob += " "
+    }
+    puts blob
+  end
 end
 
 Morse.decode_char ".-" # Should return 'A'
 Morse.decode_word "-- -.--" # Should return 'MY'
+Morse.decode_string "-- -.--   -. .- -- ." # should return 'MY NAME'
+# should return 'A BOX FULL OF RUBIES'
+Morse.decode_string ".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ..."
